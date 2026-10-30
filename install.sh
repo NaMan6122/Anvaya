@@ -1,8 +1,8 @@
 #!/bin/sh
 # Anvaya installer.
 #
-#   curl -fsSL https://get.anvayahq.com/install.sh | sh
-#   curl -fsSL https://get.anvayahq.com/install.sh | sh -s -- --component anv
+#   curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh -s -- --component anv
 #
 # Components:
 #   all   bundle: anv + mind-daemon (default)
@@ -13,10 +13,12 @@
 #   ANV_INSTALL_DIR   default $HOME/.anvaya/bin
 #   ANV_STATE_DIR     default $HOME/.anvaya
 #   ANV_CHANNEL_URL   default https://get.anvayahq.com/channels/beta.tsv
+#   ANV_CHANNEL_FALLBACK  raw GitHub channel used until the custom domain resolves
 #   ANV_CHANNEL_FILE  local channel TSV for testing/offline
 set -eu
 
 CHANNEL_URL="${ANV_CHANNEL_URL:-https://get.anvayahq.com/channels/beta.tsv}"
+CHANNEL_FALLBACK="${ANV_CHANNEL_FALLBACK:-https://raw.githubusercontent.com/NaMan6122/Anvaya/main/channels/beta.tsv}"
 CHANNEL_FILE="${ANV_CHANNEL_FILE:-}"
 COMPONENT=all
 WANT_VERSION=""
@@ -121,8 +123,12 @@ trap cleanup EXIT HUP INT TERM
 channel="$CHANNEL_FILE"
 if [ -z "$channel" ]; then
   channel="$tmpdir/channel.tsv"
-  curl -fsSL "$CHANNEL_URL?cb=$(date +%s 2>/dev/null || echo 0)" -o "$channel" \
-    || fail "could not fetch $CHANNEL_URL"
+  if ! curl -fsSL --connect-timeout 5 \
+      "$CHANNEL_URL?cb=$(date +%s 2>/dev/null || echo 0)" -o "$channel"; then
+    printf 'install: %s unreachable; using %s\n' "$CHANNEL_URL" "$CHANNEL_FALLBACK" >&2
+    curl -fsSL "$CHANNEL_FALLBACK?cb=$(date +%s 2>/dev/null || echo 0)" -o "$channel" \
+      || fail "could not fetch a channel pointer"
+  fi
 fi
 [ -f "$channel" ] || fail "channel file not found: $channel"
 channel_dir="$(cd "$(dirname "$channel")" && pwd)"
@@ -248,7 +254,7 @@ fi
 if [ "$COMPONENT" = anv ]; then
   printf '\nMind is not installed. anv will run without memory.\n'
   printf 'Install it with:\n'
-  printf '  curl -fsSL https://get.anvayahq.com/install.sh | sh -s -- --component mind\n'
+  printf '  curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh -s -- --component mind\n'
 fi
 
 if [ "$COMPONENT" = mind ]; then

@@ -9,10 +9,14 @@ release ships with checksums and release notes.
 ## Install (macOS, Apple Silicon)
 
 ```sh
-curl -fsSL https://get.anvayahq.com/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh
 export PATH="$HOME/.anvaya/bin:$PATH"
 anv --version
 ```
+
+The stable branded URL `https://get.anvayahq.com/install.sh` activates once
+`get.anvayahq.com` resolves to GitHub Pages. Until then the raw GitHub URL above is
+the supported installer.
 
 The installer places `anv` and `mind-daemon` side by side in `~/.anvaya/bin`.
 Both are required: `anv` starts the daemon on first use. Do not move one without
