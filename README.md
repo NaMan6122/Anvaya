@@ -14,7 +14,7 @@ Pick one. Each installs **both** halves together: the `anv` CLI and the
 ### curl (macOS and Linux)
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh
+curl -fsSL https://get.anvayahq.com/install.sh | sh
 ```
 
 The installer detects your platform, verifies the SHA-256 of the download, adds
@@ -24,9 +24,10 @@ The installer detects your platform, verifies the SHA-256 of the download, adds
 anv --version
 ```
 
-The branded URL `https://get.anvayahq.com/install.sh` serves the same script once
-DNS for `get.anvayahq.com` is live. Until then the raw GitHub URL above is the
-supported one.
+`get.anvayahq.com` is served from this repository by GitHub Pages. If it is ever
+unreachable, the identical script is at
+`https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh`, and the
+installer itself falls back to GitHub for its channel pointer.
 
 ### Homebrew (macOS and Linux)
 
