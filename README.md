@@ -6,32 +6,97 @@ distribution and issue tracker for the beta.
 The source is private during the beta. Binaries are published here, and every
 release ships with checksums and release notes.
 
-## Install (macOS, Apple Silicon)
+## Install
+
+Pick one. Each installs **both** halves together: the `anv` CLI and the
+`mind-daemon` memory daemon that `anv` starts on demand.
+
+### curl (macOS and Linux)
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh
-export PATH="$HOME/.anvaya/bin:$PATH"
+```
+
+The installer detects your platform, verifies the SHA-256 of the download, adds
+`anv` to your `PATH`, and prints what it did. Open a new terminal afterwards and run:
+
+```sh
 anv --version
 ```
 
-The stable branded URL `https://get.anvayahq.com/install.sh` activates once
-`get.anvayahq.com` resolves to GitHub Pages. Until then the raw GitHub URL above is
-the supported installer.
+The branded URL `https://get.anvayahq.com/install.sh` serves the same script once
+DNS for `get.anvayahq.com` is live. Until then the raw GitHub URL above is the
+supported one.
 
-The installer places `anv` and `mind-daemon` side by side in `~/.anvaya/bin`.
-Both are required: `anv` starts the daemon on first use. Do not move one without
-the other.
+### Homebrew (macOS and Linux)
+
+```sh
+brew install NaMan6122/tap/anvaya
+```
+
+Upgrade with `brew upgrade anvaya`. The formula follows the same release channel
+as the curl installer, so both install identical binaries.
+
+## Supported platforms
+
+| Platform | curl | Homebrew |
+|---|---|---|
+| macOS, Apple Silicon (arm64) | yes | yes |
+| Linux x86_64, glibc 2.39+ | yes | yes |
+| Linux arm64, glibc 2.39+ | yes | yes |
+| macOS, Intel | not yet | not yet |
+| Windows | use WSL | use WSL |
+
+Linux needs glibc 2.39 or newer (Ubuntu 24.04+, Debian 13+, Fedora 40+) because
+of the bundled ONNX Runtime. Alpine (musl) is not supported. The installer checks
+this first and tells you if your system is too old.
+
+## What gets installed (curl)
+
+```
+~/.anvaya/versions/<version>/anv            the real files
+~/.anvaya/versions/<version>/mind-daemon
+~/.local/bin/anv          -> ~/.anvaya/versions/<version>/anv
+~/.local/bin/mind-daemon  -> ~/.anvaya/versions/<version>/mind-daemon
+```
+
+- An upgrade switches the links, so it is atomic. The previous version stays on
+  disk for rollback; older ones are removed.
+- If the new binary does not run on your machine, the installer restores the
+  previous links and removes the broken version.
+- `anv` and `mind-daemon` always link side by side. Do not move one without the
+  other.
+- If `~/.local/bin` is not on your `PATH`, the installer appends one marked
+  block to your shell profile (`~/.zshrc`, `~/.bashrc` or `~/.bash_profile`, or
+  a fish conf.d file). Use `--no-modify-path` to opt out and get the line to
+  paste instead.
+
+### Options
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh -s -- --help
+```
+
+| Option | Effect |
+|---|---|
+| `--component anv` / `mind` | install only the CLI / only the daemon (the bundle is the tested pair) |
+| `--version X` | install a specific release instead of the channel's current one |
+| `--prefix DIR` | put the links in `DIR` instead of `~/.local/bin` |
+| `--no-modify-path` | never edit a shell profile |
+| `--dry-run` | show what would be installed, change nothing |
+| `--uninstall` | remove the links (your configuration and sessions are kept) |
+| `--uninstall --purge` | also delete the downloaded versions |
 
 ## Beta status
 
 - Expect breaking changes between beta releases.
-- `aarch64-apple-darwin` is the first supported target. Linux targets follow.
-- Binaries are ad-hoc signed, not notarized. The curl installer avoids macOS
-  quarantine; a tarball downloaded in a browser carries it. If macOS blocks the
-  first run, clear the attribute:
+- Binaries are ad-hoc signed, not notarized by Apple yet. The curl installer and
+  Homebrew do not set the macOS quarantine flag, so they run without a Gatekeeper
+  prompt. An archive downloaded in a browser **is** quarantined. If macOS says it
+  cannot verify the binary, clear the flag on the unpacked files:
 
   ```sh
-  xattr -d com.apple.quarantine ~/.anvaya/bin/anv ~/.anvaya/bin/mind-daemon
+  xattr -dr com.apple.quarantine /path/to/unpacked/anvaya-*
   ```
 
 ## Verify a download
@@ -40,7 +105,7 @@ Every release publishes `release.json` and `SHA256SUMS` next to the archives.
 The installer verifies SHA-256 before installing. To check by hand:
 
 ```sh
-shasum -a 256 anv-<version>-<target>.tar.gz
+shasum -a 256 anvaya-<version>-<target>.tar.gz
 ```
 
 The current channel pointer is

@@ -1,0 +1,74 @@
+name: Installer
+
+# Exercises install.sh on every platform we ship. The daily run catches a
+# release or channel pointer that has gone bad, not just script changes.
+on:
+  push:
+    paths: [install.sh, tests/**, .github/workflows/installer.yml]
+  pull_request:
+    paths: [install.sh, tests/**, .github/workflows/installer.yml]
+  schedule:
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    name: install (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, ubuntu-24.04, ubuntu-24.04-arm]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Behaviour tests plus the real published bundle
+        run: sh -c 'bash tests/test-installer.sh --live'
+
+      - name: Install the way a user does (script piped to sh)
+        run: |
+          export HOME="$RUNNER_TEMP/user"; mkdir -p "$HOME"
+          export SHELL=/bin/bash
+          if [ "$GITHUB_REF" = refs/heads/main ]; then
+            # On main, exercise the exact URL users are told to run.
+            curl -fsSL https://raw.githubusercontent.com/NaMan6122/Anvaya/main/install.sh | sh
+          else
+            cat install.sh | sh
+          fi
+          # A fresh login shell must find anv via the profile edit alone.
+          if [ "$(uname -s)" = Darwin ]; then rc="$HOME/.bash_profile"; else rc="$HOME/.bashrc"; fi
+          grep -q '>>> anvaya >>>' "$rc"
+          env -i HOME="$HOME" PATH=/usr/bin:/bin bash -c ". '$rc'; anv --version && mind-daemon --version"
+
+      - name: anv starts the daemon it was installed with
+        run: |
+          export HOME="$RUNNER_TEMP/user"
+          mkdir -p "$RUNNER_TEMP/proj" && cd "$RUNNER_TEMP/proj" && git init -q .
+          env -i HOME="$HOME" PATH=/usr/bin:/bin "$HOME/.local/bin/anv" --project "$PWD" mind stats | head -5
+          pkill -f mind-daemon || true
+
+      - name: Uninstall
+        run: |
+          export HOME="$RUNNER_TEMP/user"
+          sh install.sh --uninstall --purge
+          test ! -e "$HOME/.local/bin/anv"
+
+  too-old-or-wrong-libc:
+    name: refuses unsupported Linux (${{ matrix.image }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ["ubuntu:22.04", "debian:12", "alpine:3.20"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer explains why instead of installing a binary that cannot run
+        run: |
+          docker run --rm -v "$PWD:/w" ${{ matrix.image }} sh -c '
+            cd /w
+            if sh install.sh --dry-run; then echo "installer accepted an unsupported system"; exit 1; fi
+          ' 2>&1 | tee out.txt
+          grep -qiE "glibc .* too old|musl" out.txt
