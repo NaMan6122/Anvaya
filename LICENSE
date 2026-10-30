@@ -1,0 +1,80 @@
+ANVAYA BETA LICENSE
+Version 1.0
+
+Copyright (c) 2026 Anvaya. All rights reserved.
+
+This license governs the Anvaya command-line tool ("anv"), the Anvaya Mind
+daemon ("mind-daemon"), and the release archives that contain them (together,
+"the Software"). The Software is proprietary: it is licensed, not sold, and its
+source code is not published under this license.
+
+1. Grant
+
+   Subject to this license, you may download, install and run the Software, for
+   any purpose, including commercial and internal business use, on any number of
+   machines that you own or control.
+
+2. Restrictions
+
+   You may not:
+   a. sell, rent, lease, sublicense or redistribute the Software as part of a
+      product or service you offer to others, except that you may mirror an
+      unmodified release archive for the purpose of installing it;
+   b. modify, translate or create derivative works of the Software;
+   c. reverse engineer, decompile or disassemble the Software, except to the
+      extent that applicable law expressly permits despite this restriction;
+   d. remove, obscure or alter any copyright, license or attribution notice in
+      the Software or its archives;
+   e. use the Anvaya name, logo or other marks to endorse or promote your own
+      products without prior written permission.
+
+3. Pre-release software
+
+   Builds marked alpha, beta, preview, nightly or otherwise pre-release are
+   experimental, change without notice between releases, and may not be
+   feature-complete. They are provided for evaluation. Back up anything you
+   cannot afford to lose.
+
+4. Your content
+
+   You retain all rights to the source code, prompts, files and other materials
+   you use with the Software, and to the output it produces for you. This
+   license claims no rights in any of it. The Software stores its state locally
+   under your home directory; it sends requests only to the model providers,
+   endpoints and services that you configure.
+
+5. Third-party components
+
+   The Software includes third-party open-source components. Those components
+   remain under their own licenses, and their notices are reproduced in the
+   THIRD-PARTY-NOTICES file shipped with each release archive. Nothing in this
+   license restricts your rights under those licenses.
+
+6. No warranty
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT.
+
+7. Limitation of liability
+
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANVAYA SHALL NOT BE LIABLE FOR ANY
+   INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR ANY LOSS
+   OF PROFITS, REVENUE, DATA OR GOODWILL, ARISING OUT OF OR RELATED TO THE
+   SOFTWARE OR THIS LICENSE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+   ANVAYA'S TOTAL LIABILITY UNDER THIS LICENSE SHALL NOT EXCEED THE AMOUNT YOU
+   PAID FOR THE SOFTWARE, WHICH FOR PRE-RELEASE BUILDS IS ZERO.
+
+8. Termination
+
+   This license terminates automatically if you breach it. On termination you
+   must stop using the Software and delete all copies. Sections 2, 6, 7 and 9
+   survive termination.
+
+9. General
+
+   This license is the entire agreement between you and Anvaya regarding the
+   Software. If any provision is held unenforceable, the remaining provisions
+   stay in effect. No failure to enforce a provision is a waiver of it.
+
+Questions about this license: hello@anvayahq.com

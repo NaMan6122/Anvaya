@@ -145,6 +145,12 @@ Never paste API keys, tokens, or private paths into an issue.
 
 ## License
 
-The beta distribution license has not been finalized. Nothing in this
-repository grants redistribution rights beyond downloading and running the
-published binaries.
+Anvaya is proprietary software, licensed rather than sold. The terms are in the
+[Anvaya Beta License](LICENSE) that ships inside every release archive: you may
+download, install and run it for any purpose, including at work; you may not
+redistribute it as part of your own product, modify it, or reverse engineer it.
+Pre-release builds come with no warranty.
+
+The archives also contain `THIRD-PARTY-NOTICES`, which reproduces the license of
+every open-source component compiled into `anv` and `mind-daemon`. Those
+components stay under their own licenses and are unaffected by the terms above.
