@@ -9,7 +9,7 @@ release ships with checksums and release notes.
 ## Install (macOS, Apple Silicon)
 
 ```sh
-curl -fsSL https://get.anvaya.dev/install.sh | sh
+curl -fsSL https://get.anvayahq.com/install.sh | sh
 export PATH="$HOME/.anvaya/bin:$PATH"
 anv --version
 ```

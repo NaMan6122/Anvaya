@@ -1,8 +1,8 @@
 #!/bin/sh
 # Anvaya installer.
 #
-#   curl -fsSL https://get.anvaya.dev/install.sh | sh
-#   curl -fsSL https://get.anvaya.dev/install.sh | sh -s -- --component anv
+#   curl -fsSL https://get.anvayahq.com/install.sh | sh
+#   curl -fsSL https://get.anvayahq.com/install.sh | sh -s -- --component anv
 #
 # Components:
 #   all   bundle: anv + mind-daemon (default)
@@ -12,11 +12,11 @@
 # Environment:
 #   ANV_INSTALL_DIR   default $HOME/.anvaya/bin
 #   ANV_STATE_DIR     default $HOME/.anvaya
-#   ANV_CHANNEL_URL   default https://get.anvaya.dev/channels/beta.tsv
+#   ANV_CHANNEL_URL   default https://get.anvayahq.com/channels/beta.tsv
 #   ANV_CHANNEL_FILE  local channel TSV for testing/offline
 set -eu
 
-CHANNEL_URL="${ANV_CHANNEL_URL:-https://get.anvaya.dev/channels/beta.tsv}"
+CHANNEL_URL="${ANV_CHANNEL_URL:-https://get.anvayahq.com/channels/beta.tsv}"
 CHANNEL_FILE="${ANV_CHANNEL_FILE:-}"
 COMPONENT=all
 WANT_VERSION=""
@@ -248,7 +248,7 @@ fi
 if [ "$COMPONENT" = anv ]; then
   printf '\nMind is not installed. anv will run without memory.\n'
   printf 'Install it with:\n'
-  printf '  curl -fsSL https://get.anvaya.dev/install.sh | sh -s -- --component mind\n'
+  printf '  curl -fsSL https://get.anvayahq.com/install.sh | sh -s -- --component mind\n'
 fi
 
 if [ "$COMPONENT" = mind ]; then
