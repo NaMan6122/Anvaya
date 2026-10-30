@@ -1,0 +1,70 @@
+name: Bug report
+description: Something in the Anvaya beta is broken
+title: "[bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing the beta. **Never paste API keys, tokens, or private
+        paths.** Redact them before submitting.
+
+  - type: input
+    id: version
+    attributes:
+      label: Anvaya version
+      description: Output of `anv --version`
+      placeholder: anv 0.1.0-beta.1
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: OS and architecture
+      description: Output of `uname -sm`
+      placeholder: Darwin arm64
+    validations:
+      required: true
+
+  - type: input
+    id: provider
+    attributes:
+      label: Provider and model
+      description: For example anthropic / claude-sonnet-5.5
+      placeholder: provider / model
+    validations:
+      required: false
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Steps to reproduce, observed behavior, expected behavior. Use a minimal project if possible.
+      placeholder: |
+        1. Run ...
+        2. Ask ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Trimmed to the failure. Replace secrets and private paths.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Before submitting
+      options:
+        - label: I removed API keys, tokens, and private data from everything above.
+          required: true
+        - label: This is not a security vulnerability (those go through SECURITY.md).
+          required: true
+        - label: I reproduced this on the newest published beta.
+          required: true

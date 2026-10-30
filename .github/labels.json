@@ -1,0 +1,11 @@
+[
+  { "name": "beta",          "color": "FBCA04", "description": "Beta-channel work" },
+  { "name": "release",       "color": "0E8A16", "description": "Release tracking" },
+  { "name": "bug",           "color": "D73A4A", "description": "Something is broken" },
+  { "name": "enhancement",   "color": "A2EEEF", "description": "New capability or behavior change" },
+  { "name": "provider",      "color": "5319E7", "description": "Model provider or wire protocol" },
+  { "name": "tui",           "color": "1D76DB", "description": "Terminal interface" },
+  { "name": "mind",          "color": "BFD4F2", "description": "Mind daemon or memory" },
+  { "name": "sandbox",       "color": "B60205", "description": "Confinement, approval, or policy" },
+  { "name": "needs-triage",  "color": "EDEDED", "description": "Not yet triaged" }
+]

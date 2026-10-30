@@ -1,0 +1,60 @@
+name: Release checklist
+description: Track a beta or stable release end to end
+title: "[release] "
+labels: ["release"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: 0.1.0-beta.1
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        This issue is the public record for a release. It is opened when the
+        version is cut and closed when the artifacts and site are verified.
+
+  - type: checkboxes
+    id: build
+    attributes:
+      label: Build and package
+      options:
+        - label: CLI and Mind both on `anv/beta_0.1`, clean, in sync with origin
+          required: true
+        - label: macOS arm64 artifact built, signed and packaged
+          required: true
+        - label: Linux artifacts built in the pinned container(s)
+          required: true
+        - label: Two builds from the same commit produced identical bytes
+          required: true
+
+  - type: checkboxes
+    id: publish
+    attributes:
+      label: Publish
+      options:
+        - label: Draft release created and every asset uploaded
+          required: true
+        - label: "`release.json`, `SHA256SUMS` and channel pointers updated"
+          required: true
+        - label: Public asset URLs fetched and hashes match
+          required: true
+        - label: Installer verified in a clean HOME
+          required: true
+
+  - type: checkboxes
+    id: surfaces
+    attributes:
+      label: Public surfaces
+      options:
+        - label: Release notes published
+          required: true
+        - label: Website download page and JSON-LD show this version
+          required: true
+        - label: "`releases.json`, `llms.txt`, sitemap and RSS updated"
+          required: true
+        - label: Rollback path rehearsed
+          required: true

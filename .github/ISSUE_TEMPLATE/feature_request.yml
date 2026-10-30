@@ -1,0 +1,42 @@
+name: Feature request
+description: Propose a capability or a change in behavior
+title: "[feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The beta is intentionally narrow. Proposals that remove a sharp edge are
+        more likely to land than proposals that add a new surface.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What are you trying to do, and where does Anvaya get in the way?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What should happen instead? Include the command or interaction you expect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you tried, or other designs you rejected.
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: Anvaya version
+      description: Output of `anv --version`
+    validations:
+      required: true
