@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "product": "Anvaya",
+  "version": "0.1.0-beta.1",
+  "channel": "beta",
+  "mind_version": "0.1.0",
+  "protocol": 1,
+  "targets": {
+    "aarch64-apple-darwin": {
+      "bundle": {
+        "file": "anvaya-0.1.0-beta.1-aarch64-apple-darwin.tar.gz",
+        "sha256": "a939b90164b36a6340376697c224aa09ea007ad35ee7bb4fdc190b8e8fcbad6a",
+        "size": 22066450
+      },
+      "anv": {
+        "file": "anv-0.1.0-beta.1-aarch64-apple-darwin.tar.gz",
+        "sha256": "24fbb1d4c27e43e36b23dd6f16d58606876a22b15e0b9f6d3404d80237be9a9e",
+        "size": 9817001
+      },
+      "mind": {
+        "file": "mind-daemon-0.1.0-aarch64-apple-darwin.tar.gz",
+        "sha256": "adc7a1a695dc6ed0a6cfbf735b93b202d678b336c3413d0becea4ae3b72becdd",
+        "size": 12248274
+      }
+    },
+    "aarch64-unknown-linux-gnu": {
+      "bundle": {
+        "file": "anvaya-0.1.0-beta.1-aarch64-unknown-linux-gnu.tar.gz",
+        "sha256": "f092075cf8340cade17630a19634fd54863afcb8c897e2901cb6ec93109e5d92",
+        "size": 25286904
+      },
+      "anv": {
+        "file": "anv-0.1.0-beta.1-aarch64-unknown-linux-gnu.tar.gz",
+        "sha256": "07b8965faa24864e562c56354565496c0c334b56aee9af443ca879c7786d4e8e",
+        "size": 10471417
+      },
+      "mind": {
+        "file": "mind-daemon-0.1.0-aarch64-unknown-linux-gnu.tar.gz",
+        "sha256": "81baa5ecc9a0f2d417da88ac6dc40e95b23546ac0b2bb97461625c819e29e5c0",
+        "size": 14817207
+      }
+    },
+    "x86_64-unknown-linux-gnu": {
+      "bundle": {
+        "file": "anvaya-0.1.0-beta.1-x86_64-unknown-linux-gnu.tar.gz",
+        "sha256": "fbda2fbac2ead1629f57889c5bd37ad6b3fd7ca3af2c3f84d55338d9eee9dbff",
+        "size": 25636925
+      },
+      "anv": {
+        "file": "anv-0.1.0-beta.1-x86_64-unknown-linux-gnu.tar.gz",
+        "sha256": "0a881afaca332747bc24300f96bd8efefcec6b1669648e82a6cbc2f7ece1cacc",
+        "size": 11067375
+      },
+      "mind": {
+        "file": "mind-daemon-0.1.0-x86_64-unknown-linux-gnu.tar.gz",
+        "sha256": "519c19cf9aacfe92ee0b7e544facbeaba9ffb319df0a77ea1aec8666cc506185",
+        "size": 14564396
+      }
+    }
+  }
+}

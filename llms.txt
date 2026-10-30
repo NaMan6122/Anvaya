@@ -1,0 +1,8 @@
+# Anvaya
+
+> Anvaya is an agentic terminal coding assistant.
+
+Latest beta: 0.1.0-beta.1 (Mind 0.1.0)
+Install: https://get.anvayahq.com/install.sh
+Releases: https://github.com/NaMan6122/Anvaya/releases
+Channel: https://get.anvayahq.com/channels/beta.json
