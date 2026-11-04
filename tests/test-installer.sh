@@ -69,6 +69,21 @@ ANV_CHANNEL_FILE="$CH" run >/dev/null
 [ -L "$HOME/.anvaya/bin/anv" ] && [ ! -e "$HOME/.anvaya/bin/anv.previous" ] && "$HOME/.anvaya/bin/anv" --version | grep -q 1.0.0 \
   && ok "legacy ~/.anvaya/bin copies replaced by links" || bad "legacy migration"
 
+# 3b. a legacy symlink (not a real file) is repointed too: the installer used to
+#     leave it alone, so ~/.anvaya/bin kept winning on PATH after an upgrade.
+rm -rf "$HOME/.anvaya" "$BIN"; mkdir -p "$HOME/.anvaya/bin"
+make_bundle 1.0.0 0
+mkdir -p "$HOME/.anvaya/versions/0.9.0"
+printf '#!/bin/sh\necho old\n' > "$HOME/.anvaya/versions/0.9.0/anv"
+cp "$HOME/.anvaya/versions/0.9.0/anv" "$HOME/.anvaya/versions/0.9.0/mind-daemon"
+chmod +x "$HOME/.anvaya/versions/0.9.0/"*
+ln -s "$HOME/.anvaya/versions/0.9.0/anv" "$HOME/.anvaya/bin/anv"
+ln -s "$HOME/.anvaya/versions/0.9.0/mind-daemon" "$HOME/.anvaya/bin/mind-daemon"
+ANV_CHANNEL_FILE="$CH" run >/dev/null
+[ "$(readlink "$HOME/.anvaya/bin/anv")" = "$HOME/.anvaya/versions/1.0.0/anv" ] \
+  && [ "$(readlink "$HOME/.anvaya/bin/mind-daemon")" = "$HOME/.anvaya/versions/1.0.0/mind-daemon" ] \
+  && ok "legacy ~/.anvaya/bin symlinks repointed" || bad "legacy symlink migration"
+
 # 4. tampered archive is rejected and nothing changes
 before="$(readlink "$BIN/anv")"
 make_bundle 1.0.1 0

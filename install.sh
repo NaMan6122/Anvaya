@@ -353,10 +353,13 @@ link_one() {  # link_one <name> <dir-holding-links>
 }
 for n in $need; do
   link_one "$n" "$BIN_DIR"
-  # An older installer put real copies in ~/.anvaya/bin. They would shadow the
-  # new links on any PATH that lists that directory first, so point them at the
-  # same version instead of leaving stale binaries behind.
-  if [ "$BIN_DIR" != "$LEGACY_BIN" ] && [ -f "$LEGACY_BIN/$n" ] && [ ! -L "$LEGACY_BIN/$n" ]; then
+  # An older installer put real copies in ~/.anvaya/bin, and a later run left
+  # symlinks there. Either kind shadows the new links on any PATH that lists that
+  # directory first, so repoint whatever is there unless it already names the
+  # version just installed.
+  if [ "$BIN_DIR" != "$LEGACY_BIN" ] \
+     && { [ -e "$LEGACY_BIN/$n" ] || [ -L "$LEGACY_BIN/$n" ]; } \
+     && [ "$(readlink "$LEGACY_BIN/$n" 2>/dev/null)" != "$dest/$n" ]; then
     link_one "$n" "$LEGACY_BIN"
     rm -f "$LEGACY_BIN/$n.previous"
   fi
