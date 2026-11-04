@@ -1,83 +1,83 @@
 {
   "schema": 1,
   "channel": "beta",
-  "latest": "0.1.0-beta.1",
+  "latest": "0.1.0-beta.2",
   "releases": [
     {
-      "version": "0.1.0-beta.1",
+      "version": "0.1.0-beta.2",
       "mind_version": "0.1.0",
       "protocol": 1,
-      "release_tag": "v0.1.0-beta.1",
-      "published_at": "2026-10-30T06:34:45Z",
-      "notes_url": "https://anvayahq.com/changelog/0.1.0-beta.1",
+      "release_tag": "v0.1.0-beta.2",
+      "published_at": "2026-11-04T19:57:47Z",
+      "notes_url": "https://anvayahq.com/changelog/0.1.0-beta.2",
       "targets": {
         "aarch64-apple-darwin": {
           "bundle": {
-            "file": "anvaya-0.1.0-beta.1-aarch64-apple-darwin.tar.gz",
-            "sha256": "a939b90164b36a6340376697c224aa09ea007ad35ee7bb4fdc190b8e8fcbad6a",
-            "size": 22066450,
-            "version": "0.1.0-beta.1",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/anvaya-0.1.0-beta.1-aarch64-apple-darwin.tar.gz"
+            "file": "anvaya-0.1.0-beta.2-aarch64-apple-darwin.tar.gz",
+            "sha256": "ebea04b9796c288bd18c4b137b19507efeebc3b1214a0543dc04521ca12d5509",
+            "size": 22836277,
+            "version": "0.1.0-beta.2",
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/anvaya-0.1.0-beta.2-aarch64-apple-darwin.tar.gz"
           },
           "anv": {
-            "file": "anv-0.1.0-beta.1-aarch64-apple-darwin.tar.gz",
-            "sha256": "24fbb1d4c27e43e36b23dd6f16d58606876a22b15e0b9f6d3404d80237be9a9e",
-            "size": 9817001,
-            "version": "0.1.0-beta.1",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/anv-0.1.0-beta.1-aarch64-apple-darwin.tar.gz"
+            "file": "anv-0.1.0-beta.2-aarch64-apple-darwin.tar.gz",
+            "sha256": "c7598785996f23f05f5736694066208d9c806e29604cfc5e06e7c70ce51bec9c",
+            "size": 10549306,
+            "version": "0.1.0-beta.2",
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/anv-0.1.0-beta.2-aarch64-apple-darwin.tar.gz"
           },
           "mind": {
             "file": "mind-daemon-0.1.0-aarch64-apple-darwin.tar.gz",
-            "sha256": "adc7a1a695dc6ed0a6cfbf735b93b202d678b336c3413d0becea4ae3b72becdd",
-            "size": 12248274,
+            "sha256": "7371494c1fea1e9d301fcb778317edb5ef633124acd778c1f28e7af43263210d",
+            "size": 12336405,
             "version": "0.1.0",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/mind-daemon-0.1.0-aarch64-apple-darwin.tar.gz"
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/mind-daemon-0.1.0-aarch64-apple-darwin.tar.gz"
           }
         },
         "aarch64-unknown-linux-gnu": {
           "bundle": {
-            "file": "anvaya-0.1.0-beta.1-aarch64-unknown-linux-gnu.tar.gz",
-            "sha256": "f092075cf8340cade17630a19634fd54863afcb8c897e2901cb6ec93109e5d92",
-            "size": 25286904,
-            "version": "0.1.0-beta.1",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/anvaya-0.1.0-beta.1-aarch64-unknown-linux-gnu.tar.gz"
+            "file": "anvaya-0.1.0-beta.2-aarch64-unknown-linux-gnu.tar.gz",
+            "sha256": "3f2551daba2ee33351af01e58faf3a562a95684512acbd845577f1cd10178a47",
+            "size": 26080759,
+            "version": "0.1.0-beta.2",
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/anvaya-0.1.0-beta.2-aarch64-unknown-linux-gnu.tar.gz"
           },
           "anv": {
-            "file": "anv-0.1.0-beta.1-aarch64-unknown-linux-gnu.tar.gz",
-            "sha256": "07b8965faa24864e562c56354565496c0c334b56aee9af443ca879c7786d4e8e",
-            "size": 10471417,
-            "version": "0.1.0-beta.1",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/anv-0.1.0-beta.1-aarch64-unknown-linux-gnu.tar.gz"
+            "file": "anv-0.1.0-beta.2-aarch64-unknown-linux-gnu.tar.gz",
+            "sha256": "44e90420b8124ca971f5e27b8f0c9198f6eb33e042ac0f50ea8a356483cf3a5d",
+            "size": 11229600,
+            "version": "0.1.0-beta.2",
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/anv-0.1.0-beta.2-aarch64-unknown-linux-gnu.tar.gz"
           },
           "mind": {
             "file": "mind-daemon-0.1.0-aarch64-unknown-linux-gnu.tar.gz",
-            "sha256": "81baa5ecc9a0f2d417da88ac6dc40e95b23546ac0b2bb97461625c819e29e5c0",
-            "size": 14817207,
+            "sha256": "245a013cd861541c548cd60c7cf89ee5057d2d4a8ea6bf17772b5a0e5b79e750",
+            "size": 14896535,
             "version": "0.1.0",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/mind-daemon-0.1.0-aarch64-unknown-linux-gnu.tar.gz"
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/mind-daemon-0.1.0-aarch64-unknown-linux-gnu.tar.gz"
           }
         },
         "x86_64-unknown-linux-gnu": {
           "bundle": {
-            "file": "anvaya-0.1.0-beta.1-x86_64-unknown-linux-gnu.tar.gz",
-            "sha256": "fbda2fbac2ead1629f57889c5bd37ad6b3fd7ca3af2c3f84d55338d9eee9dbff",
-            "size": 25636925,
-            "version": "0.1.0-beta.1",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/anvaya-0.1.0-beta.1-x86_64-unknown-linux-gnu.tar.gz"
+            "file": "anvaya-0.1.0-beta.2-x86_64-unknown-linux-gnu.tar.gz",
+            "sha256": "561f67e7117125309de28d09344d8d9e8e7148498dd25c5e74eacdbd35aa0588",
+            "size": 26478378,
+            "version": "0.1.0-beta.2",
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/anvaya-0.1.0-beta.2-x86_64-unknown-linux-gnu.tar.gz"
           },
           "anv": {
-            "file": "anv-0.1.0-beta.1-x86_64-unknown-linux-gnu.tar.gz",
-            "sha256": "0a881afaca332747bc24300f96bd8efefcec6b1669648e82a6cbc2f7ece1cacc",
-            "size": 11067375,
-            "version": "0.1.0-beta.1",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/anv-0.1.0-beta.1-x86_64-unknown-linux-gnu.tar.gz"
+            "file": "anv-0.1.0-beta.2-x86_64-unknown-linux-gnu.tar.gz",
+            "sha256": "a045befc36f6ff5a73b03275aef341416b6e58abb8771ba4e6adc4ab830ef8ef",
+            "size": 11873695,
+            "version": "0.1.0-beta.2",
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/anv-0.1.0-beta.2-x86_64-unknown-linux-gnu.tar.gz"
           },
           "mind": {
             "file": "mind-daemon-0.1.0-x86_64-unknown-linux-gnu.tar.gz",
-            "sha256": "519c19cf9aacfe92ee0b7e544facbeaba9ffb319df0a77ea1aec8666cc506185",
-            "size": 14564396,
+            "sha256": "e010346fa223d1721baadf170ed5da6fb42f4b4500a1288df2000d6665bfe037",
+            "size": 14654160,
             "version": "0.1.0",
-            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.1/mind-daemon-0.1.0-x86_64-unknown-linux-gnu.tar.gz"
+            "url": "https://github.com/NaMan6122/Anvaya/releases/download/v0.1.0-beta.2/mind-daemon-0.1.0-x86_64-unknown-linux-gnu.tar.gz"
           }
         }
       }
