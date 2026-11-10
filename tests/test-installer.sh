@@ -22,6 +22,10 @@ esac
 S="$(mktemp -d "${TMPDIR:-/tmp}/anv-installer-test.XXXXXX")"
 trap 'rm -rf "$S"' EXIT
 export HOME="$S/home" SHELL=/bin/zsh
+# zsh honours ZDOTDIR and install.sh follows it, so an inherited ZDOTDIR from the
+# developer's own shell would send the PATH block outside this sandbox — failing
+# the assertions below and editing the real ~/.zshrc. Test it explicitly instead.
+unset ZDOTDIR
 mkdir -p "$HOME"
 BIN="$HOME/.local/bin"
 VERS="$HOME/.anvaya/versions"
@@ -122,6 +126,12 @@ run --uninstall --purge >/dev/null
 rm -f "$HOME/.zshrc"
 out="$(ANV_CHANNEL_FILE="$CH" run --no-modify-path)"
 [ ! -f "$HOME/.zshrc" ] && echo "$out" | grep -q "Add Anvaya to your PATH" && ok "--no-modify-path leaves the profile alone" || bad "--no-modify-path"
+
+# 9b. zsh honours ZDOTDIR, so the installer must follow it there
+rm -rf "$S/zdot"; mkdir -p "$S/zdot"; rm -f "$HOME/.zshrc"
+ZDOTDIR="$S/zdot" ANV_CHANNEL_FILE="$CH" sh "$INSTALL" >/dev/null 2>&1
+grep -q '>>> anvaya >>>' "$S/zdot/.zshrc" 2>/dev/null && ok "PATH block honours \$ZDOTDIR" || bad "ZDOTDIR ignored"
+[ -f "$HOME/.zshrc" ] && bad "ZDOTDIR install also wrote \$HOME/.zshrc" || ok "ZDOTDIR install leaves \$HOME/.zshrc alone"
 
 # 10. platform guards
 if [ "$(uname -s)" = Linux ]; then
